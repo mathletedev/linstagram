@@ -4,6 +4,7 @@ import * as adapter from "@trpc/server/adapters/express";
 import cors from "cors";
 import express, { Application } from "express";
 
+import { client } from "./client";
 import { appRouter } from "./router";
 
 const app: Application = express();
@@ -20,6 +21,15 @@ app.use(
 	})
 );
 
-app.listen(8080, () => {
-	console.log("Server running on port 8080!");
+app.listen(Bun.env.PORT, () => {
+	console.log(`Server running on port ${Bun.env.PORT}!`);
 });
+
+try {
+	await client.connect();
+	console.log(
+		`Connected to PostgreSQL @ ${Bun.env.PG_HOST}:${Bun.env.PG_PORT}`
+	);
+} catch (err) {
+	console.error(err);
+}
