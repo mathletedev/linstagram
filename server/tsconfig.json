@@ -1,13 +1,12 @@
 {
 	"compilerOptions": {
 		"esModuleInterop": true,
-		"module": "esnext",
-		"moduleResolution": "nodenext",
+		"module": "commonjs",
 		"outDir": "dist",
 		"removeComments": true,
 		"skipLibCheck": true,
 		"strict": true,
-		"target": "esnext",
+		"target": "es6",
 		"types": ["bun-types"]
 	},
 	"include": ["src/**/*.ts"],
